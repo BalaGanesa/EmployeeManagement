@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.3/css/jquery.orgchart.min.css">
+      <style>
+         #chart-container {
+         font-family: Arial;
+         height: 100%;
+         border-radius: 5px;
+         overflow: auto;
+         text-align: center;
+         }
+         .orgchart{
+         background-image:none;
+         }
+         #github-link {
+         position: fixed;
+         top: 0px;
+         right: 10px;
+         font-size: 3em;
+         }
+      </style>
+       <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="style1.css" rel="stylesheet" type="text/css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.3/js/jquery.orgchart.min.js"></script>
+       
+   </head>
+   <body onload="login()">
+      <div id="chart-container"></div>
+      <script>
+    (function($) {
+        jQuery = $;
+          $(function() {
+           let makeTree = (data) => {
+   
+   dataObj = {};
+   for(let elem of data){
+       dataObj[elem.id] = elem;
+   }
+      let hash = data.reduce ( (acc, {ReportTingTo, id}) => 
+       acc.set(ReportTingTo, (acc.get(ReportTingTo) || []).concat(id)) 
+   , new Map );                
+   let recurse = (ReportTingTo) => 
+       {
+           
+           if(hash.has(ReportTingTo)){
+               
+               let id = hash.get(ReportTingTo).map(recurse);
+               
+               
+               
+               return { ReportTingTo,"id":id, name: dataObj[ReportTingTo] && dataObj[ReportTingTo].name, title:dataObj[ReportTingTo] && dataObj[ReportTingTo].title,"children":id}
+               
+           }
+           else{
+               if(dataObj[ReportTingTo] == undefined){
+                   return { ReportTingTo}
+               }
+               else{
+               return {ReportTingTo,name: dataObj[ReportTingTo].name, title:dataObj[ReportTingTo].title}; 
+               }
+           }
+       }
+   return recurse(undefined).id;
+}
+   
+           	var xhr = new XMLHttpRequest();
+     	  	xhr.open("GET", "view");
+ 	   	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 	   	    xhr.send();
+ 	   	    let Array ;
+ 	   	    xhr.onreadystatechange = function() {
+ 	   	        if (xhr.readyState == 4) {
+ 	   	        	Array = xhr.responseText;
+ 	   	        	console.log(Array);
+ 	   	        let a = JSON.parse(Array);
+ 	   	        console.log(a);
+ 	   	    let data = [{id:"NULL"},...a];
+ 	   	    let result = makeTree(data);
+ 	   	       var oc = $('#chart-container').orgchart({
+ 	   	         'data' : result[0].children[0],
+ 	   	         'nodeContent': 'title'
+ 	   	       });
+ 	   	        }
+ 	     	}
+          });
+          
+        })($);
+  
+        
+      </script>
+     <script src = "login.js"></script>
+   </body>
+</html>

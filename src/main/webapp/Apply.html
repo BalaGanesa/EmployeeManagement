@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <link href="style1.css" rel="stylesheet" type="text/css" />
+  
+ <script src="https://kit.fontawesome.com/b1181b7862.js" crossorigin ="anonymous"></script>
+</head>
+<body onload = "loadEmpId(),load(),leave()">
+	<div id = "whole">
+    <div id = whole1>
+      <span>Apply Leave</span>
+    </div>
+    <div id = "whole2">
+     <div class='smallDiv'><h3>EmployeeID</h3><input type='text' id = 'empId' name='empId' required></div>
+       <div class='smallDiv'><h3>From Date</h3><input type='date' id = 'dateFrom' name='dateFrom' placeholder='From'required></div>
+      <div class='smallDiv'><h3>To Date</h3><input type='date' id = 'dateTo' name='dateTo' placeholder='To'required></div>
+      <div class = "smallDiv11"><h3 id = "h3" >Leave Type</h3><select id = 'LeaveType' name='LeaveType'></select></div>
+      <div class='smallDiv'><h3>Reason</h3><input type='text' id = 'Reason' name='Reason' required></div>
+    </div>
+    <div id = "whole3">
+      <input id = "submit" type = "button" value = "SUBMIT" onclick = "Apply1()">
+      <input id = "cancel" type = "button" value = "CANCEL" onclick = "cancelpage()">
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>

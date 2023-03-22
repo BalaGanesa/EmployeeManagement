@@ -1,0 +1,11 @@
+package Enum;
+
+public enum leaveType {
+	CASUAL_LEAVE,
+	SICK_LEAVE,
+	WFH,
+	OT,
+	EARNED_LEAVE,
+	MATERNITY_LEAVE,
+	OPTIONAL_HOLIDAY;
+}

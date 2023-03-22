@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="style1.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id = "main">
+<div class = "Whole" >
+    <div id = Whole1>
+      <span>view profile</span>
+    </div>
+        <div id = "Whole2">
+     <div class='smallDiv'><h3>EmployeeID</h3><input type='text' id = 'empid' name='empId'  readonly></div>
+<div class='smallDiv'><h3>EmployeeName</h3><input type='text' id = 'Empname' name='empname'  readonly></div>
+<div class='smallDiv'><h3>Date-Of-Birth</h3><input type='date' id = 'Date' name='date'  readonly></div>
+<div class='smallDiv'><h3>Team</h3><input type='text' id = 'Team' name='team'  readonly></div>
+<div class='smallDiv'><h3>Email_id</h3><input type='email' id = 'Email' name='email'  readonly></div>
+<div class='smallDiv'><h3>contact_no</h3><input type='number' id = 'Contact_no' name='contact_no' readonly></div>
+<div class='smallDiv'><h3>Reporting_to</h3><input type='text' id = 'Reportees' name='reportees' readonly>
+     </div>
+     </div>
+    <div id = "Whole3" >
+      <input id = "edit" type = "button" value = "Edit" onclick = "update()">
+      <input id = "cancel" type = "button" value = "CANCEL" onclick = "var a = document.createElement('a');a.href = 'Emp.html';a.click()"">
+    </div>
+</div>
+    </div>
+     </div>
+      <script >
+      	console.log("aaa");
+          var xhr = new XMLHttpRequest();
+          var currentlyLoged = document.cookie.split("=");
+          console.log(currentlyLoged[1])
+          xhr.open("POST", "update");
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.send("currentlyLoged=" + currentlyLoged[1]);
+          xhr.onreadystatechange = () => {
+              if (xhr.readyState == 4) {
+                  let json = JSON.parse(xhr.responseText);
+                  console.log(json);
+                  console.log(json.empID);
+                var a =   document.getElementById("Whole2").childNodes;
+                a[0].value = json.empID;
+                  document.getElementById("empid").value = json.empID;
+                  document.getElementById("Empname").value = json.empName;
+                  document.getElementById("Date").value = json.DOB;
+                  document.getElementById("Team").value = json.team;
+                  document.getElementById("Email").value = json.Emailid;
+                  document.getElementById("Contact_no").value = json.contactno;
+                  document.getElementById("Reportees").value = json.ReportingTO;
+
+              }
+          }
+      </script>
+      <script src = "login.js"></script>
+</body>
+</html>

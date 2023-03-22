@@ -1,0 +1,85 @@
+#Container{
+height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+user-select: none;
+margin-top: -86px;
+}
+#date{
+    vertical-align: inherit;
+    font-size: 139%;
+    font-family: monospace;
+}
+#header{
+    height: 15%;
+    width: 100%;
+}
+
+#checkInBut{
+  height: 40%;
+width: 10%;
+background-color: #27cda5;
+border-radius: 5vw;
+margin: 8vh 85vw;
+display: flex;
+justify-content: space-around;
+color: white;
+font-size: 137%;
+align-items: center;
+}
+
+#bodyTop{
+    height: 40vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#bodyTopInner{
+    height: 100%;
+    width: 35%;
+    background-color: #ffffff;
+    padding: 1vh 2vw;
+    box-sizing: border-box;
+    overflow: scroll;
+    box-shadow: 2px 3px 6px 6px #a49e9e;
+
+
+}
+*::-webkit-scrollbar{
+    display: none;
+}
+#bodyTopInner1{
+    height: 100%;
+    width: 80%;
+    background-color: #ffffff;
+    padding: 1vh 2vw;
+    box-sizing: border-box;
+    box-shadow: 2px 3px 6px 6px #a49e9e;
+}
+
+#attendanceDiv{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+}
+
+#timeLine{
+    height: .5vh;
+    width: 75%;
+    background-color: green;
+    border-radius: 1vh;
+}
+
+#general{
+    height: 5vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
